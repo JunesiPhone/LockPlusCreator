@@ -1,0 +1,14 @@
+Hello future self. I know how you forget what you have done so I will explain.
+
+
+To keep this project light you decided to make a build step which compiles all css and js files. Instead of automating this you decided to manually add files you want compiled and compressed.
+
+You have separated these for individual parts of the site.
+
+Main folder is for index.html and iwidget.html as they share the same style.
+
+MobileApp folder is for mobile.html which works in the Lock+ Cydia app
+
+Mobile is for ios.html which works in mobileSafari
+
+It’s easy to build. Example would be cd into main and run ./build.sh compiled files will go into the creator/css and creator/js file. 

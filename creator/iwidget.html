@@ -1,0 +1,152 @@
+<html>
+
+<head>
+	<title>LockPlus Creator</title>
+	<meta charset="UTF-8">
+
+	<!-- Site description and twitter card -->
+	<link rel="author" href="https://plus.google.com/107601000975926769542/posts">
+	<meta name="description" content="Lock + Lockscreen designer for iPhones in your browser">
+	<meta name="keywords" content="JunesiPhone, JunesGraphics, Apple, jailbreak, lockscreen, designer, LockPlus">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@JunesiPhone">
+	<meta name="twitter:creator" content="@JunesiPhone">
+	<meta name="twitter:title" content="Lock +">
+	<meta name="twitter:description" content="Design iWidgets online to use on your iPhone">
+	<meta name="twitter:image" content="/twittercard.png">
+
+	<!-- Browser icons -->
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="icon" type="image/png" href="http://lockplus.us/favicon.ico">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+
+	<!-- Mobile redirect -->
+	<script>if (screen.width <= 800) { alert("This site is not designed for mobile."); window.location = "http://lockplus.us";}</script>
+</head>
+
+<body>
+	<!-- Header/Menu -->
+	<header>
+		<div class="select-menu">
+			<div class="select"></div>
+		</div>
+		<ul class="menuUL hidden">
+			<li class="menulist"><a href="javascript:void(0)" title="On" id="menutips">Tips</a></li>
+			<li class="menulist"><a href="javascript:void(0)" title="Off" id="snaptips">Snap</a></li>
+			<li class="menulist"><a href="javascript:void(0)" title="Off" id="gridtips">Grid</a></li>
+			<li class="menulist"><a href="http://lockplus.info/docs">Help</a></li>
+			<li class="menulist"><a href="http://lockplus.info/themes">Themes</a></li>
+			<li class="menulist"><a href="http://lockplus.us/walls">Walls</a></li>
+			<li class="menulist"><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2FLockPlus.us/&text=Create%20a%20lockscreen%20online&hashtags=LockPlus">Share</a></li>
+			<li class="menulist"><a href="http://LockPlus.us/login">Login</a></li>
+			<li class="menulist"><a href="http://cydia.saurik.com/package/com.macciti.lockplus/">Cydget</a></li>
+		</ul>
+	</header>
+
+	<!-- Main container -->
+	<div class="container">
+		<!-- Main phone must only contain items needed in finished project -->
+		<div class="phone">
+			<div class="screen">
+				<img class='svg' />
+				<div id="screenElements"></div>
+				<div id="overlay" class="screenoverlay"></div>
+				<img width="320px" height="568px" id='wallpaper' style='width:320px; height:568px; pointer-events:none; display:none;' />
+				<canvas width="320px" height="568px" id='blurcanvas' class='blur canvas'></canvas>
+				<img width="100px" height="177.5px" id='miniWallpaper' style='width:150px; height:266.25px; pointer-events:none; display:none; position:absolute; top:0;' />
+				<canvas width="150px" height="266.25px" id='miniBlurCanvas' class='miniBlur canvas'></canvas>
+			</div>
+		</div>
+		<!-- Grid placeholder -->
+		<div class="grids"></div>
+		<!-- Tips banner -->
+		<div id="tipContainer">
+			<div id="tips" title="tap to hide tips">
+				<span id="helpicon" class="fa fa-lightbulb-o"></span>
+				<div id="helpinfo"></div>
+			</div>
+		</div>
+		<!-- Tool panel placeholder-->
+		<div class="toolPanel">
+			<ul id="icons"></ul>
+		</div>
+		<!-- Item panels and placeholders -->
+		<div class="elementPanel" style="display:none;">
+			<h3 id="cl">Clock Elements</h3>
+			<div id="clockList" style="display:none;"></div>
+			<h3 id="wl">Weather Elements</h3>
+			<div id="weatherList" style="display:none;"></div>
+			<h3 id="sl">System Elements</h3>
+			<div id="systemList" style="display:none;"></div>
+			<h3 id="ml">Misc Elements</h3>
+			<div id="miscList" style="display:none;"></div>
+		</div>
+		<!-- Font list placeholder -->
+		<div id="font">
+			<ul id="fList" class="wave font" style="display:none; cursor:default;"></ul>
+		</div>
+	</div>
+
+	<!-- Popup when user uploads wallpaper -->
+	<div id="wallSelector" style="display:none;">
+		<span>Pick your wallpaper size</span>
+		<li onclick="action.chooseWallSize('i5')" title="640x1136">i5</li>
+		<li onclick="action.chooseWallSize('i6')" title="750x1334">i6</li>
+		<li onclick="action.chooseWallSize('6Plus')" title="1080x1920">6+</li>
+	</div>
+
+	<!-- Canvas to show blur -->
+	<div id="previewCanvas" style="opacity:0;"></div>
+
+	<!-- Weather icons -->
+	<div class="iconList" style="display:none;"></div>
+
+	<!-- Loading progress -->
+	<div class="loader">Loading...</div>
+
+	<!-- Form filled and sent with submit-->
+	<form action="php/exportiwidget.php" method="POST" id="myform">
+		<input type="hidden" name="fileName" id="fileName" />
+		<input type="hidden" name="themeType" id="themeType" />
+		<input type="hidden" name="devname" id="devname" />
+		<input type="hidden" name="Tpreview" id="Tpreview" />
+		<input type="hidden" name="Twallpaper" id="Twallpaper" />
+		<input type="hidden" name="Toverlay" id="Toverlay" />
+		<input type="hidden" name="Ticon" id="Ticon" />
+		<input type="hidden" name="Telements" id="Telements" />
+		<input style="display:none;" type="submit" value="Submit">
+	</form>
+
+	<!-- Version and attribution -->
+	<footer>
+		<a id="version" href="http://lockplus.info/forum/index/topic/lockplus-us/">Version 1.3.4</a>
+		<span id="copyright">© Copyright 2015 <a href="http://JunesiPhone.com">JunesiPhone</a> All rights reserved </span>
+		</br>
+		<div id="logo"><img src="css/logo.png" width="40" /></div>
+	</footer>
+
+	<!-- Background input button kinda hacky -->
+	<input type='file' class="input" id='bgInput' name='bg'>
+
+	<!-- Place to preload fonts -->
+	<div class="font_preload" style="position:absolute;top:-600px;left:0;opacity: 1"></div>
+
+	<!-- Defines website type -->
+	<script type="text/javascript">
+			var isInEditMode = false,
+					isWidget = true,
+					editSB = false;
+	</script>
+
+	<!-- Main javascript -->
+	<script src="js/includes.min.js"></script>
+	<script src="js/compiled.min.js"></script>
+</body>
+
+</html>
