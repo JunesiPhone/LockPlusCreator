@@ -212,7 +212,7 @@ action.chooseWallSize = function (size) {
         try {
             action.setBG(newWall);
         } catch (err) {
-            alert("Wallpaper too big! This file will not save to the theme! Please compress this wallpaper. Browser " + err);
+            //alert("Wallpaper too big! This file will not save to the theme! Please compress this wallpaper. Browser " + err);
         }
         $('#wallSelector').css('display', 'none');
     }
