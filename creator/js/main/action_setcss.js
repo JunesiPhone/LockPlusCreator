@@ -29,7 +29,9 @@ function isAlreadyInArr(arr, toTest) {
 action.absolutePos = function (elementId, cssKey, cssValue) {
     var i, arr;
     if (typeof elementId === 'string') {
-        elementId = [[elementId, cssKey, cssValue]];
+        elementId = [
+            [elementId, cssKey, cssValue]
+        ];
     }
     for (i = 0; i < action.selectedItems.length; i += 1) {
         if (!isAlreadyInArr(elementId, action.selectedItems[i])) {
@@ -119,7 +121,7 @@ action.objectCss = function (elementId) {
 
                 // elementId[i][0] = elementName, elementId[i][1][k] = cssKey, elementId[i][2][k] = cssValue
                 $('#' + elementId[i][0]).css(elementId[i][1][k], elementId[i][2][k]);
-                if (action.savedElements.placedElements[elementId[i][0]] === 'undefined') { // Necessary check to prevent errors, primarily for the weather icon, iconImg isn't actually in placedElements
+                if (action.savedElements.placedElements[elementId[i][0]] !== 'undefined') { // Necessary check to prevent errors, primarily for the weather icon, iconImg isn't actually in placedElements
                     action.savedElements.placedElements[elementId[i][0]][elementId[i][1][k]] = elementId[i][2][k];
                 }
 
