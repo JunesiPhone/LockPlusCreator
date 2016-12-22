@@ -8,7 +8,9 @@
   action,
   constants,
   $,
-  editSB
+  editSB,
+  isWidget,
+  alert
 */
 
 
@@ -76,6 +78,9 @@ action.toolPanel = function (evt) { //handle clicks from toolpanel
         if (editSB) {
             window.open('http://lockplus.us/creator/load/index.php?edit=SB');
             window.close();
+        }
+        if (isWidget) {
+            alert('This feature is not available at this time');
         } else {
             window.open(location.href.replace('#', '') + 'load');
             window.close();
