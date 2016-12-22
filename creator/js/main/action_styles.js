@@ -46,6 +46,9 @@ action.cgcolor = function (color, cssKey, div) {
         $("#" + div).on('move.spectrum', function (e, tinycolor) {
             action.cgcolor(tinycolor.toRgbString(), cssKey, div);
         });
+        $("#" + div).on('hide.spectrum', function (e, tinycolor) {
+            $("#" + div).spectrum("destroy");
+        });
     }
 };
 action.cgStyle = function () {
