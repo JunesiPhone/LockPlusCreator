@@ -1,0 +1,73 @@
+.phone{
+	position: absolute;
+	width: 320px;
+	height: 568px;
+	background-color: transparent;
+	-webkit-transform-origin:0 0;
+	overflow: visible;
+	left:50%;
+	top:50%;
+	-webkit-transform: translate(-50%,-50%);
+}
+.screen,.screenoverlay{
+	position: absolute;
+	width: 320px;
+	height: 568px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	z-index: 0!important;
+}
+.phone{
+	position: relative;
+	-webkit-box-shadow:0 -30px 40px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.8) inset;
+
+}
+.phone:before, .phone:after{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 200px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    border-radius:100px / 10px;
+}
+.phone:after{
+    left:auto;
+}
+.screen{
+	width: 320px;
+	height: 568px;
+	background-color: #343434;
+}
+.screenoverlay{
+	left:0;
+	top:0;
+	pointer-events:none;
+	outline: 1px solid #323232;
+	z-index: 1!important;
+}
+.canvas {
+	pointer-events: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.blur {
+	width: 320px!important;
+	height: 568px!important;
+}
+.miniBlurCanvas {
+	width: 150px!important;
+	height:266.25px!important;
+}
+.svg{
+	width: 320px;
+	height: 568px;
+	position: absolute;
+	margin-left: 300px;
+	opacity: 0;
+}

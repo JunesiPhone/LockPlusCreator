@@ -4,89 +4,83 @@
   browser: true,
   todo: true
 */
+
 /*global
-  action,
   constants,
+  confirm,
+  alert,
+	action,
   $,
 */
 
 
-/**
- * show/hide icon menus including submenus
- *
- *
- */
-
 action.setEditMenuInputsState = function (state, maxIndex, id) { //state: -2 means show all, -1 means hide all, other numbers means toggle that index
-    var menuArray,
-        i,
-        splitArray,
-        shouldPreload;
-    if (typeof id === 'string') {
-        menuArray = action.getProperMenuForId(id);
-    } else {
-        menuArray = id || '';
-    }
-    if (!maxIndex) {
-        maxIndex = constants.editArray.length;
-    }
+    if (!id) var id = '';
+    if (typeof id === 'string')
+        var menuArray = action.getProperMenuForId(id)
+    else
+        var menuArray = id;
+    if (!maxIndex) var maxIndex = constants.editArray.length;
     if (state <= -1) {
-        for (i = 0; i < maxIndex && i < menuArray.length; i += 1) {
-            splitArray = menuArray[i].split("~");
+        for (var i = 0; i < maxIndex && i < menuArray.length; i++) {
+            var splitArray = menuArray[i].split("~");
+
             //Only preloads things that are specified in the whitelist array
-            shouldPreload = (constants.preloadWhitelist[splitArray[0]] === '');
+            var shouldPreload = (constants.preloadWhitelist[splitArray[0]] === '');
+
             if (shouldPreload && ((state === -2 && $('#' + splitArray[3]).children().length < 2) || (state === -1 && $('#' + splitArray[3]).children().length > 1))) {
                 $('#' + splitArray[0]).trigger('click');
             }
         }
     } else if (state > -1 && state < menuArray.length) {
         $('#' + constants.editArray[0].split("~")[state]).trigger('click');
+    } else {
+        console.log("That's not a valid index. The state should be between (inclusive) -2 and " + (constants.editArray.length - 1));
     }
 };
 
 action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurround: -2 means surround none with div, -1 means surround all, otherwise number is index to surround
-    var i,
-        div,
-        a,
-        li,
-        splitArray;
     $('#icons').empty();
     $('.elementPanel').scrollTop(0);
     $('#logo').attr('title', 'Now Showing: ' + action.getTitleForArray(menuArray)); // Updating the title of the menu
-    for (i = 0; i < menuArray.length; i += 1) {
-        div = document.createElement('div');
+    for (var i = 0; i < menuArray.length; i++) {
+        var div = document.createElement('div');
         div.id = "Test";
-        a = document.createElement('a');
-        li = document.createElement('li');
-        a.href = 'javascript:void(0)';
-        a.className = 'leftTooltip';
-        splitArray = menuArray[i].split('~');
+        //var a = document.createElement('a');
+        var li = document.createElement('li');
+        //a.href = 'javascript:void(0)';
+        //a.className = 'leftTooltip';
+        var splitArray = menuArray[i].split('~');
         if (splitArray[0] === "element") {
             if ($('.elementPanel').is(":visible")) {
-                a.title = "Hide Elements Panel";
+                //a.title = "Hide Elements Panel"
             } else {
-                a.title = "Show Elements Panel";
+                //a.title = "Show Elements Panel";
             }
         } else {
-            a.title = splitArray[1];
+            //a.title = splitArray[1];
         }
         li.className = splitArray[2];
         li.id = splitArray[0];
-        a.appendChild(li);
+        li.title = splitArray[4];
+        div.appendChild(li);
+        $('#icons').append(div);
         if (indexesToSurround > -2) {
             if (indexesToSurround === -1 || i === indexesToSurround) {
                 div.id = splitArray[3];
-                div.appendChild(a);
-                $('#icons').append(div);
+                //div.appendChild(a);
+                //$('#icons').append(div);
             } else {
-                $('#icons').append(a);
+                //$('#icons').append(a);
             }
         } else {
-            $('#icons').append(a);
+            //$('#icons').append(a);
         }
+
     }
-    action.setEditMenuInputsState(-2, false, menuArray);
+    //action.setEditMenuInputsState(-2, false, menuArray);
 };
+
 action.getTitleForArray = function (menuArray) { // Any icon menu that's shown needs to be added here to update its title
     switch (menuArray) {
     case constants.toolArray:

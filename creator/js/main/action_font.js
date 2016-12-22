@@ -10,6 +10,8 @@
   alert,
   constants,
   fontArray,
+  isMobile,
+  stroll,
   $
 */
 /**
@@ -40,9 +42,11 @@ action.cgfont = function () {
         $('#fList').append(li);
     }
     $('#fList').toggle('display');
-    setTimeout(function () {
-        stroll.bind('#font ul');
-    }, 1000);
+    if (!isMobile) {
+        setTimeout(function () {
+            stroll.bind('#font ul');
+        }, 1000);
+    }
 };
 
 action.cguppercase = function () {

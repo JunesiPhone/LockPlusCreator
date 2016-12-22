@@ -8,6 +8,7 @@
   action,
   alert,
   constants,
+  isMobile,
   $
 */
 /**
@@ -15,7 +16,6 @@
  *
  *
  */
-
 action.hideClearLabel = function () { //clear theme
     $('.noClear').remove();
     $('.yesClear').remove();
@@ -24,16 +24,27 @@ action.hideClearLabel = function () { //clear theme
 };
 
 action.clearTheme = function (code) { // -1 is to check, 0 doesn't clear theme, 1 clears theme
+    var label,
+        button;
     if (code === -1) { // check what to do
         if ($('.yesClear').length || $('.noClear').length || $('.clearLabel').length) { // Check to make confirmation isn't alreay showing
             action.clearTheme(0);
         } else {
-            var label = $('#clearDiv').position().top + 13, //auto align clear label
+            if (isMobile) {
+                label = $('#clearDiv').position().top + 10; //auto align clear label
                 button = label + 4;
-            $('#clear').parent().attr('class', ' '); //Hide tooltip
-            $('<button style="top:' + button + 'px" type="button" class="noClear">No</button>').prependTo('#clearDiv');
-            $('<button style="top:' + button + 'px" type="button" class="yesClear">Yes</button>').prependTo('#clearDiv');
-            $('<label style="top:' + label + 'px" class="clearLabel">Clear Theme?</label>').prependTo('#clearDiv');
+                $('#clear').parent().attr('class', ' '); //Hide tooltip
+                $('<button style="top:' + button + 'px; left:180px; background-color:#343434;" type="button" class="noClear">No</button>').prependTo('#clearDiv');
+                $('<button style="top:' + button + 'px; left:120px; background-color:#343434;" type="button" class="yesClear">Yes</button>').prependTo('#clearDiv');
+                $('<label style="top:' + label + 'px; left:200px; display:none;" class="clearLabel">Clear Theme?</label>').prependTo('#clearDiv');
+            } else {
+                label = $('#clearDiv').position().top + 13; //auto align clear label
+                button = label + 4;
+                $('#clear').parent().attr('class', ' '); //Hide tooltip
+                $('<button style="top:' + button + 'px" type="button" class="noClear">No</button>').prependTo('#clearDiv');
+                $('<button style="top:' + button + 'px" type="button" class="yesClear">Yes</button>').prependTo('#clearDiv');
+                $('<label style="top:' + label + 'px" class="clearLabel">Clear Theme?</label>').prependTo('#clearDiv');
+            }
 
 
             $('.yesClear').click(function () {

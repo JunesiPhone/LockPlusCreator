@@ -7,6 +7,7 @@
 /*global
   action,
   alert,
+  isMobile,
   $
 */
 /**
@@ -16,6 +17,9 @@
  */
 action.cgShadowColor = function (isForBox) {
     var selector = isForBox ? '#boxshadowColorDiv' : '#shadowColorDiv';
+    if (isMobile) {
+        selector = isForBox;
+    }
     $(selector).spectrum({
         showInitial: true,
         maxSelectionSize: 66,
@@ -34,6 +38,9 @@ action.cgShadowColor = function (isForBox) {
     }, 0); //give it time to load.
     $(selector).on('move.spectrum', function (e, tinycolor) {
         action.updateShadow(isForBox ? 'box' : '', tinycolor.toRgbString(), 'px', 'color', 'set'); //Added special case to updateShadow for this
+    });
+    $(selector).on('hide.spectrum', function (e, tinycolor) {
+        $(selector).spectrum("destroy");
     });
 };
 

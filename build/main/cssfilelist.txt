@@ -1,8 +1,8 @@
-../../creator/css/base.css
-../../creator/css/phone.css
-../../creator/css/toolpanel.css
-../../creator/css/elementPanels.css
-../../creator/css/tooltips.css
-../../creator/css/stroll.css
-../../creator/css/slick.css
-../../creator/css/spectrum.css
+../../creator/css/maincss/base.css
+../../creator/css/maincss/phone.css
+../../creator/css/maincss/toolpanel.css
+../../creator/css/maincss/elementPanels.css
+../../creator/css/maincss/tooltips.css
+../../creator/css/maincss/stroll.css
+../../creator/css/maincss/slick.css
+../../creator/css/maincss/spectrum.css
