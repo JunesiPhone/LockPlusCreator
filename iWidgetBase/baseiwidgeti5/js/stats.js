@@ -25,7 +25,6 @@ function batteryStats(options) {
         info.ramFree = IS2S('ramFree');
         info.ramUsed = IS2S('ramUsed');
         info.ramAvailable = IS2S('ramAvailable');
-        info.deviceModel = IS2S('deviceModelHumanReadable');
         options.success(info);
         setTimeout(function () {
             updateBattery();
@@ -52,7 +51,7 @@ batteryStats({
                     value = info.name;
                     break;
                 case 'firmware':
-                    value = info.deviceModel;
+                    value = ' ';
                     break;
                 case 'battery':
                     value = info.percent;
