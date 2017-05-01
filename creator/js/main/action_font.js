@@ -21,6 +21,7 @@
  */
 action.setFont = function (fontName) {
     action.setCss(action.selectedItem, 'font-family', fontName);
+    document.getElementById(action.selectedItem).setAttribute('title', "Font: " + fontName);
     $('#fList').toggle('display');
 };
 

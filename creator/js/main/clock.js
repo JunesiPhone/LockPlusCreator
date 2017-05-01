@@ -309,9 +309,9 @@ function loadClock() {
                 yeartext: convertTOWord(clock.year()),
                 clocksmush: clock.hour() + "" + clock.minute(),
                 hrnsmin: clock.hourtext() + ' ' + clock.minute(),
-                datebar: clock.month() + '|' + clock.date() + '|' + clock.smyear(),
-                datesnslash: clock.month() + '/' + clock.date() + '/' + clock.smyear(),
-                datesingled: clock.month() + '-' + clock.date() + '-' + clock.smyear(),
+                datebar: clock.month() + 1 + '|' + clock.date() + '|' + clock.smyear(),
+                datesnslash: clock.month() + 1 + '/' + clock.date() + '/' + clock.smyear(),
+                datesingled: clock.month() + 1  + '-' + clock.date() + '-' + clock.smyear(),
                 hrsmush: clock.hourtext() + '' + clock.minute(),
                 dayabdatemonth: clock.sdaytext() + ' ' + clock.date() + ' ' + clock.smonthtext(),
                 daycommadatemonth: clock.sdaytext() + ', ' + clock.date() + ' ' + clock.smonthtext(),
@@ -332,7 +332,10 @@ function loadClock() {
                 monthslashdate: clock.monthtext() + '/' + clock.date(),
                 fullmonthdotdate: clock.monthtext() + '.' + clock.date(),
                 datedotmonthfull: clock.date() + '.' + clock.monthtext(),
-                datemonthyear: clock.date() + ' ' + clock.monthtext() + ', ' + clock.year()
+                datemonthyear: clock.date() + ' ' + clock.monthtext() + ', ' + clock.year(),
+                prevdaystrings: clock.yesterdaydaytext() + ' ' + clock.monthtext() + ' ' + clock.prevdate(),
+                todaystrings: clock.daytext() + ' ' + clock.monthtext() + ' ' + clock.date(),
+                nextdaystrings: clock.nextdaytext() + ' ' + clock.monthtext() + ' ' + clock.nextdate()
 
             };
             Object.keys(clockElements).forEach(function (key) {

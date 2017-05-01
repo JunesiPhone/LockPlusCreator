@@ -10,38 +10,46 @@
  * holds the array of fonts
  * Defines clock, weather, system, and misc elements
  * Loads after clock.js as it contains cF and convertTOWord
-*/
+ */
 
-var fontArray = ['abeatbykai', 'android', 'aileronlight', 'aileronthin', 'aileronbold', 'aileronthick'
-                , 'aileronultra', 'aileronheavy', 'ailerons', 'alpine', 'apriolight', 'aprioreg', 'anders'
-                , 'autograf', 'aventura', 'azedobold', 'azedolight', 'bariollight', 'bariolthin', 'bariolbold'
-                , 'bikoblack', 'bikoregular', 'bikobold', 'bebasbold', 'bebaslight', 'bebasneue', 'bebasneueregular'
-                , 'breaksemi', 'braxton', 'building', 'canter', 'canarolight', 'clemente', 'codebold', 'codelight'
-                , 'condlight', 'damier', 'din', 'dinerfat', 'disclaimerclassic', 'disclaimerreg', 'dense', 'gasaltreg'
-                , 'gasaltthin', 'gasaltbold', 'globerreg', 'globerthin', 'geoman', 'gothicregular', 'gothicbold'
-                , 'higher', 'huxlee', 'fabfelt', 'futura', 'future', 'fringe', 'geoma', 'gido', 'hab', 'high', 'ikaros'
-                , 'infinity', 'jaapokki', 'kanji', 'kaneda', 'krinkles', 'krinklesdecor', 'lg', 'lobster', 'loveloblack'
-                , 'loveloline', 'lovelolinel', 'manbow', 'nexabold', 'nexabolder', 'nexalight', 'manifesto', 'manteka'
-                , 'makhina', 'mikadolight', 'mikadoregular', 'mikadobold', 'mikadomedium', 'mikadoultra', 'mikadoblack'
-                , 'modernesans', 'moonlight', 'moonbold', 'mostwasted', 'olympic', 'penelope', 'perfo', 'plstk', 'poplar'
-                , 'provisionary', 'qontra', 'ratinfested', 'reckoner', 'reboard', 'realtimethin', 'realtimelight'
-                , 'realtimeregular', 'realtimesemi', 'realtimebold', 'rexbold', 'robotobold', 'robotolight', 'robotoregular'
-                , 'salamat', 'samster', 'samsunglight', 'samsungregular', 'sanfranlight', 'sanfranthin', 'sanfranreg'
-                , 'sanfranbold', 'sanfranheavy', 'sciflysans', 'streamster', 'shimes', 'shimestwo', 'signer', 'scriptina'
-                , 'superair', 'talldark', 'timber', 'tiza', 'track', 'tresdias'
+ var fontArray = ['abeatbykai', 'adamasreg', 'android', 'aileronlight', 'aileronthin', 'aileronbold', 'aileronthick'
+                 , 'aileronultra', 'aileronheavy', 'ailerons', 'akrobatblack', 'akrobatbold', 'akrobatexbold', 'akrobatlight'
+                 , 'akrobatregular', 'akrobatsemibold', 'akrobatthin', 'akrobatxlight'
+                 , 'allura', 'alpine', 'apriolight', 'aprioreg', 'anders', 'arista'
+                 , 'autograf', 'avantgarde', 'aventura', 'azedobold', 'azedolight'
+                 , 'back', 'bariollight', 'bariolthin', 'bariolbold'
+                 , 'bikoblack', 'bikoregular', 'bikobold', 'bebasbold', 'bebaslight', 'bebasneue', 'bebasneueregular','blanch'
+                 , 'breaksemi', 'braxton', 'building'
+                 , 'canter', 'canarolight', 'captian', 'clemente', 'codebold', 'codelight', 'condlight'
+                 , 'cooperhewiththin', 'cooperhewittbold', 'cooperhewittbook', 'cooperhewittlight', 'cooperhewittreg'
+                 , 'crafted', 'cumulous'
+                 , 'damier', 'din', 'dinerfat', 'disclaimerclassic', 'disclaimerreg', 'dense'
+                 , 'earth', 'everafte', 'establo'
+                 , 'fabfelt', 'feast', 'flow', 'freeky', 'fronte', 'futura', 'future', 'fringe', 'fortuna'
+                 , 'geoma', 'gido' , 'gasaltreg', 'gasaltthin', 'gasaltbold', 'globerreg', 'globerthin'
+                 , 'geoman', 'goodvibes', 'gothicregular', 'gothicbold'
+                 , 'hab', 'hallo', 'hanging', 'high', 'higher', 'huxlee', 'heygorgeous'
+                 , 'ikaros', 'infinity', 'inkferno'
+                 , 'jaapokki', 'jellyka'
+                 , 'kanji', 'kaneda', 'king', 'krinkles', 'krinklesdecor'
+                 , 'lcd', 'lg', 'lobster', 'lot', 'loveloblack', 'latoblack', 'latobold', 'latolight', 'latoreg', 'latothin'
+                 , 'loveloline', 'lovelolinel', 'manbow', 'nexabold', 'nexabolder', 'nexalight', 'manifesto', 'manteka'
+                 , 'makhina', 'masterofbreak', 'mikadolight', 'mikadoregular', 'mikadobold', 'mikadomedium', 'mikadoultra', 'mikadoblack'
+                 , 'modernesans', 'moonlight', 'moonbold', 'moonshinerround', 'moonshinersharp','mohave', 'mostwasted'
+                 , 'olympic', 'oswald'
+                 , 'panama','penelope', 'perfo', 'plstk', 'poplar', 'provisionary', 'pushkin'
+                 , 'quadrantabold', 'quadrantareg', 'qontra'
+                 , 'ratinfested', 'reckoner', 'reboard', 'realtimethin', 'realtimelight'
+                 , 'realtimeregular', 'realtimesemi', 'realtimebold', 'rexbold', 'roadrage', 'robotobold', 'robotolight', 'robotoregular'
+                 , 'salamat', 'samster', 'samsunglight', 'samsungregular', 'samsungexlight', 'samsungreg', 'sanfranlight'
+                 , 'sanfranthin', 'sanfranreg', 'sanfranbold', 'sanfranheavy', 'sciflysans', 'streamster', 'shimes'
+                 , 'shimestwo', 'signer', 'scriptina'
+                 , 'storopia', 'superair'
+                 , 'talldark', 'timber', 'tiza', 'track', 'tresdias'
+                 , 'wildyouth'
+                 , 'zekton', 'zelda', 'entypo', 'mat1', 'mat2', 'mat3', 'mat4', 'mat5'
 
-                , 'NEW FONTS'
-
-                , 'allura', 'arista', 'astrud', 'back', 'blanch', 'captian', 'crafted', 'cumulous', 'earth', 'entypo'
-                , 'establo', 'feast', 'freeky', 'fronte', 'hallo', 'hanging', 'lot', 'mohave', 'oswald', 'panama'
-                , 'pushkin', 'roadrage', 'storopia', 'zekton', 'zelda'
-
-                , 'NEW FONTS'
-
-                , 'adamasreg', 'cooperhewiththin', 'cooperhewittbold', 'cooperhewittbook', 'cooperhewittlight'
-                , 'cooperhewittreg', 'everafte', 'goodvibes', 'latoblack', 'latobold', 'latolight', 'latoreg'
-                , 'latothin', 'masterofbreak', 'moonshinerround', 'moonshinersharp', 'quadrantabold', 'quadrantareg'
-];
+ ];
 
 var elementPanel = {
     clockElements: {
@@ -71,25 +79,25 @@ var elementPanel = {
             daydate: cF.daytext() + " " + cF.date(),
             daydotdate: cF.daytext() + "." + cF.date()
         },
-        strings4:{
+        strings4: {
             title: "Strings4",
             hrmin: cF.hourtext() + '.' + cF.minute(),
             hrnsmin: cF.hourtext() + ' ' + cF.minute(),
             hrsmush: cF.hourtext() + cF.minute(),
-            hrmintx: (cF.minutetwotext() !== "") ? cF.hourtext() + '.' + cF.minuteonetextdot() +  '.' + cF.minutetwotext() : cF.hourtext() + '.' + cF.minuteonetextdot() + cF.minutetwotext(),
+            hrmintx: (cF.minutetwotext() !== "") ? cF.hourtext() + '.' + cF.minuteonetextdot() + '.' + cF.minutetwotext() : cF.hourtext() + '.' + cF.minuteonetextdot() + cF.minutetwotext(),
             ttext: cF.hourtext() + " " + cF.minuteonetext() + ' ' + cF.minutetwotext()
         },
         strings5: {
             title: "Strings5",
-            datebar: cF.month() + '|' + cF.date() + '|' + cF.smyear(),
-            datesnslash: cF.month() + '/' + cF.date() + '/' + cF.smyear(),
-            datesingled: cF.month() + '-' + cF.date() + '-' + cF.smyear(),
-            mdy: cF.month() + "/" + cF.date() + "/" + cF.year()
+            datebar: cF.month() + 1 + '|' + cF.date() + '|' + cF.smyear(),
+            datesnslash: cF.month() + 1 + '/' + cF.date() + '/' + cF.smyear(),
+            datesingled: cF.month() + 1 + '-' + cF.date() + '-' + cF.smyear(),
+            mdy: cF.month() + 1 + "/" + cF.date() + "/" + cF.year()
         },
         strings6: {
             title: "Strings6",
-            nsmd : cF.smonthtext() + " " + cF.date(),
-            ndsm : cF.date() + " " + cF.smonthtext(),
+            nsmd: cF.smonthtext() + " " + cF.date(),
+            ndsm: cF.date() + " " + cF.smonthtext(),
             ndsmd: cF.date() + " " + cF.sdaytext(),
             nsmdd: cF.sdaytext() + " " + cF.date(),
             smdotdate: cF.smonthtext() + '.' + cF.date(),
@@ -115,7 +123,10 @@ var elementPanel = {
         },
         strings9: {
             title: "Strings9",
-            datemonthyear: cF.date() + ' ' + cF.monthtext() + ', ' + cF.year()
+            datemonthyear: cF.date() + ' ' + cF.monthtext() + ', ' + cF.year(),
+            prevdaystrings: cF.yesterdaydaytext() + ' ' + cF.monthtext() + ' ' + cF.prevdate(),
+            todaystrings: cF.daytext() + ' ' + cF.monthtext() + ' ' + cF.date(),
+            nextdaystrings: cF.nextdaytext() + ' ' + cF.monthtext() + ' ' + cF.nextdate()
         },
         clocks: {
             title: "Clock",
@@ -136,7 +147,7 @@ var elementPanel = {
             minute: cF.minute(),
             mtext: cF.minuteonetext() + ' ' + cF.minutetwotext()
         },
-        seconds:{
+        seconds: {
             title: "Seconds",
             second: cF.second()
         },
@@ -214,7 +225,7 @@ var elementPanel = {
             tempdeg: "76°",
             tempdegplus: "76°f"
         },
-        icon:{
+        icon: {
             title: "Icon",
             icon: "Weather"
         },
@@ -303,7 +314,7 @@ var elementPanel = {
             chargingstate: "Charging"
         },
         memory: {
-            title:"Memory",
+            title: "Memory",
             ramFree: "700 (Free)",
             ramUsed: "100 (Used)",
             ramAvailable: "800 (Available)",
@@ -331,8 +342,8 @@ var elementPanel = {
             wifi: "20",
             wifipercent: "20%"
         },
-        notifications:{
-            title:"Notifications",
+        notifications: {
+            title: "Notifications",
             notifymail: "Mail",
             notifysms: "SMS",
             notifyphone: "Phone",
@@ -357,14 +368,14 @@ var elementPanel = {
             boxFour: "Custom Box 4",
             boxFive: "Custom Box 5"
         },
-		circle: {
-			title: "Circles",
-			boxCircleOne: "Custom Circle 1",
-			boxCircleTwo: "Custom Circle 2",
-			boxCircleThree: "Custom Circle 3",
-			boxCircleFour: "Custom Circle 4",
-			boxCircleFive: "Custom Circle 5"
-		},
+        circle: {
+            title: "Circles",
+            boxCircleOne: "Custom Circle 1",
+            boxCircleTwo: "Custom Circle 2",
+            boxCircleThree: "Custom Circle 3",
+            boxCircleFour: "Custom Circle 4",
+            boxCircleFive: "Custom Circle 5"
+        },
         apps: {
             title: "Apps 1",
             app1: "Mail",
@@ -374,7 +385,7 @@ var elementPanel = {
             app5: "Tweetbot",
             app6: "Telegram"
         },
-        apps2:{
+        apps2: {
             title: "Apps 2",
             app7: "Instagram",
             app8: "Pandora",
@@ -383,7 +394,7 @@ var elementPanel = {
             app11: "Kik",
             app12: "YouTube"
         },
-        apps3:{
+        apps3: {
             title: "Apps 3",
             app13: "WhatsApp",
             app14: "Safari",
@@ -392,7 +403,7 @@ var elementPanel = {
             app17: "Music",
             app18: "Camera"
         },
-        apps4:{
+        apps4: {
             title: "Apps 4",
             app19: "Reminders",
             app20: "Notes",
@@ -401,7 +412,7 @@ var elementPanel = {
             app23: "Calculator",
             app24: "Cydia"
         },
-        apps5:{
+        apps5: {
             title: "Apps 5",
             app25: "YouTube",
             app26: "Settings",

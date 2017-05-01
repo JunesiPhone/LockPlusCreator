@@ -5,7 +5,7 @@ To keep this project light you decided to make a build step which compiles all c
 
 You have separated these for individual parts of the site.
 
-Main folder is for index.html and iwidget.html as they share the same style.
+Main folder is for index.htmlx and iwidget.html as they share the same style.
 
 MobileApp folder is for mobile.html which works in the Lock+ Cydia app
 

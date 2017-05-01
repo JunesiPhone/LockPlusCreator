@@ -1,1 +1,2 @@
 Compiles css and js for index.html and iwidget.html
+/Applications/XAMPP/xamppfiles/htdocs/server/LockPlusGit/build/main/cssfilelist.txt

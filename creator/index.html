@@ -24,11 +24,15 @@
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/fonts/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/fonts/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts/fonts.css?001">
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 
 	<!-- Mobile redirect -->
-	<script>if (screen.width <= 800) { alert("This site is not designed for mobile."); window.location = "http://lockplus.us";}</script>
+	<script>
+	if (screen.width <= 800) {
+    	window.location = "http://lockplus.us/creator/ios.html";
+  	}
+	</script>
 </head>
 
 <body>
@@ -102,9 +106,9 @@
 	<!-- Popup when user uploads wallpaper -->
 	<div id="wallSelector" style="display:none;">
 		<span>Pick your wallpaper size</span>
-		<li onclick="chooseWallSize('i5')" title="640x1136">i5</li>
-		<li onclick="chooseWallSize('i6')" title="750x1334">i6</li>
-		<li onclick="chooseWallSize('6Plus')" title="1080x1920">6+</li>
+		<li onclick="action.chooseWallSize('i5')" title="640x1136">i5</li>
+		<li onclick="action.chooseWallSize('i6')" title="750x1334">i6</li>
+		<li onclick="action.chooseWallSize('6Plus')" title="1080x1920">6+</li>
 	</div>
 
 	<!-- Canvas to show blur -->
@@ -133,7 +137,7 @@
 	<!-- Version and attribution -->
 	<footer>
 		<a id="version" href="http://lockplus.info/forum/index/topic/lockplus-us/">Version 1.3.6</a>
-		<span id="copyright">© Copyright 2016 <a href="http://JunesiPhone.com">JunesiPhone</a> All rights reserved </span>
+		<span id="copyright">© Copyright 2017 <a href="http://JunesiPhone.com">JunesiPhone</a> All rights reserved </span>
 		</br>
 		<div id="logo"><img src="css/logo.png" width="40" /></div>
 	</footer>
@@ -154,7 +158,7 @@
 
 	<!-- Main javascript -->
 	<script src="js/includes.min.js"></script>
-	<script src="js/compiled.min.js"></script>
+	<script src="js/compiled.min.js?002"></script>
 </body>
 
 </html>
