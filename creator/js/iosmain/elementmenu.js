@@ -172,4 +172,3 @@ elPanel.init = function () {
 setTimeout(function () {
     elPanel.init();
 }, 10);
-

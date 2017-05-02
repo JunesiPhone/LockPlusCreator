@@ -40,26 +40,31 @@ action.setEditMenuInputsState = function (state, maxIndex, id) { //state: -2 mea
 };
 
 action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurround: -2 means surround none with div, -1 means surround all, otherwise number is index to surround
+
     $('#icons').empty();
     $('.elementPanel').scrollTop(0);
     $('#logo').attr('title', 'Now Showing: ' + action.getTitleForArray(menuArray)); // Updating the title of the menu
     for (var i = 0; i < menuArray.length; i++) {
+
+      var splitArray = menuArray[i].split('~');
+      if (splitArray[0] === "element") {
+          if ($('.elementPanel').is(":visible")) {
+              //a.title = "Hide Elements Panel"
+          } else {
+              //a.title = "Show Elements Panel";
+          }
+      } else {
+          //a.title = splitArray[1];
+      }
+      if(splitArray[0] === "widget" && action.widgetLoaded === true){
+
+      }else{
         var div = document.createElement('div');
         div.id = "Test";
         //var a = document.createElement('a');
         var li = document.createElement('li');
         //a.href = 'javascript:void(0)';
         //a.className = 'leftTooltip';
-        var splitArray = menuArray[i].split('~');
-        if (splitArray[0] === "element") {
-            if ($('.elementPanel').is(":visible")) {
-                //a.title = "Hide Elements Panel"
-            } else {
-                //a.title = "Show Elements Panel";
-            }
-        } else {
-            //a.title = splitArray[1];
-        }
         li.className = splitArray[2];
         li.id = splitArray[0];
         li.title = splitArray[4];
@@ -76,7 +81,7 @@ action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurro
         } else {
             //$('#icons').append(a);
         }
-
+      }
     }
     //action.setEditMenuInputsState(-2, false, menuArray);
 };

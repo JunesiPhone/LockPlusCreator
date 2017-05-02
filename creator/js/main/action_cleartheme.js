@@ -70,6 +70,7 @@ action.clearTheme = function (code) { // -1 is to check, 0 doesn't clear theme, 
         action.setBG(''); //culprit to object is undefined when placed
         $('.screenoverlay').css('background-image', '');
         $('.screen').prepend('<img class="svg"/>');
+        action.widgetLoaded = false;
 
         //Clear undo/redo stuff
         action.actionQueue = [];
@@ -82,7 +83,7 @@ action.clearTheme = function (code) { // -1 is to check, 0 doesn't clear theme, 
             previousAction: null,
             initialValue: ''
         };
-
+        location.reload();
         action.setHelpText('Cleared. Click "Show Elements Panel" to place elements.');
     }
 };

@@ -1,3 +1,4 @@
+action.widgetLoaded = null;
 action.toolPanel = function (evt) {
 	action.uploadSelection = evt.target.id;
     switch (evt.target.id) {
@@ -38,7 +39,9 @@ action.toolPanel = function (evt) {
         	this.saveTheme();
             break;
         case 'widget':
-            showWidgets();
+				if(!action.widgetLoaded){
+						showWidgets();
+				}
             break;
         case 'load':
         	location.href = "http://lockplus.us/creator/load/mobile.php";

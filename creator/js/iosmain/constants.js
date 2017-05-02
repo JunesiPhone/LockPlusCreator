@@ -108,6 +108,9 @@ var constants = {
                 , 'changeicon~Change Icon~fa fa-code-fork~changeIconDiv~change'
                 ,'transform~Change Transformations~fa fa-level-up~transformDiv~transform'
                 , 'delete~Delete item~fa fa-trash-o~deleteDiv~delete'],
+    widgetArray: ['widgetsize~Scale~fa fa-expand~changeWidgetDiv~width'
+                ,'position~Change Position~fa fa-arrows~positionDiv~top-left'
+                , 'delete~Delete item~fa fa-trash-o~deleteDiv~delete'],
                 gridSizeTop: 160,
                 gridSizeLeft: 284,
     //preloadBlacklist: {color:'', fonts:'',transform:'',shadow:'',linearGradient:'',linearBoxGradient:'',backToEdit:'',boxShadow:'',boxColor:'',changeicon:'',affixes:''}, /*//If it shouldn't be opened when the menu is opened, the id needs to be here. 'delete', 'clear', and 'color' are already taken care of*/

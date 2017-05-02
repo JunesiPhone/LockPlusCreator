@@ -118,7 +118,21 @@ menu.createButtons = function (id, name) {
         button.innerHTML = 'Delete';
         button.onclick = function () {
             action.removeItemFromScreen(action.selectedItem);
-            $('#bottomMenu').remove();
+
+            console.log(action.selectedItem);
+
+            if ($.inArray(action.selectedItem, constants.widgets) === -1) {
+              action.widgetLoaded = false;
+            }
+
+
+            if (!action.isScrollingEdit) {
+                handleScreenClick(event);
+                elPanel.screenClick();
+                menu.screenClick(event);
+                $('.sidePanel').css('display', 'none');
+            }
+
             $("#accordion").find("li[title='" + action.selectedItem + "']").removeClass();
         };
     } else if (name === 'changeicon') {
@@ -258,52 +272,67 @@ menu.createRange = function (name, does) {
     document.getElementById('sliderContainer' + name).appendChild(range);
 
     var opct = document.querySelector('.' + name + 'js-opacity');
-
+    var startVal = null;
+    var decimal = false;
+    var min = 0;
+    var max = 0;
 
     if (name == 'BMiconsize') {
-        var startVal = $('#iconImg').css(does).replace(/[^-\d\.]/g, '');
+        startVal = $('#iconImg').css(does).replace(/[^-\d\.]/g, '');
+        decimal = false;
+        max = 320;
     } else {
-        var startVal = $('#' + action.selectedItem).css(does).replace(/[^-\d\.]/g, '');
+        if(name == 'BMwidgetsize'){
+          startVal = 1;
+          decimal = true;
+          max = 1;
+        }else{
+          startVal = $('#' + action.selectedItem).css(does).replace(/[^-\d\.]/g, '');
+          decimal = false;
+          max = 320;
+        }
     }
+    console.log(name);
 
     var initOpct = new Powerange(opct, {
         callback: function () {
             menu.adjust(name);
-
         },
-        decimal: false,
+        decimal: decimal,
         min: 0,
-        max: 320,
+        max: max,
         start: startVal,
         hideRange: true
     });
 
-    var inputContainer = document.createElement('div');
-    inputContainer.className = 'inputContainer';
-    var input2 = document.createElement('input');
-    input2.type = 'text';
-    input2.value = startVal;
-    input2.id = 'manual' + name;
-    input2.className = 'manualInput';
-    var increment = document.createElement('div');
-    var decrement = document.createElement('div');
-    increment.className = 'incs inButton';
-    increment.onclick = function () {
-        menu.inputClick($(this));
+    if(name != 'BMwidgetsize'){
+      var inputContainer = document.createElement('div');
+      inputContainer.className = 'inputContainer';
+      var input2 = document.createElement('input');
+      input2.type = 'text';
+      input2.value = startVal;
+      input2.id = 'manual' + name;
+      input2.className = 'manualInput';
+      var increment = document.createElement('div');
+      var decrement = document.createElement('div');
+      increment.className = 'incs inButton';
+      increment.onclick = function () {
+          menu.inputClick($(this));
+      }
+      increment.innerHTML = '+';
+      decrement.className = 'decs inButton';
+      decrement.onclick = function () {
+          menu.inputClick($(this));
+      }
+      decrement.innerHTML = '-';
+      input2.onchange = function () {
+          menu.adjustManual(name, this.value);
+      }
+      inputContainer.appendChild(increment);
+      inputContainer.appendChild(decrement);
+      inputContainer.appendChild(input2);
+      document.getElementById(name).appendChild(inputContainer);
     }
-    increment.innerHTML = '+';
-    decrement.className = 'decs inButton';
-    decrement.onclick = function () {
-        menu.inputClick($(this));
-    }
-    decrement.innerHTML = '-';
-    input2.onchange = function () {
-        menu.adjustManual(name, this.value);
-    }
-    inputContainer.appendChild(increment);
-    inputContainer.appendChild(decrement);
-    inputContainer.appendChild(input2);
-    document.getElementById(name).appendChild(inputContainer);
 
 };
 
@@ -336,6 +365,12 @@ menu.adjust = function (adjustItem, value, manual) {
                 $('#iconImg').css('width', value + 'px');
                 //action.setCss('iconImg', 'width', value + 'px');
                 break;
+            case 'BMwidgetsize':
+            console.log(value);
+                action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
+                $('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
+                //action.setCss('iconImg', 'width', value + 'px');
+                break;
             case 'BMborder':
                 action.setCss(action.selectedItem, 'border-width', value + 'px');
                 break;
@@ -363,6 +398,9 @@ menu.adjust = function (adjustItem, value, manual) {
             } else if (adjustItem === 'BMiconsize') {
                 action.setCss(action.selectedItem, 'width', value + 'px');
                 $('#iconImg').css('width', value + 'px');
+            } else if (adjustItem === 'BMwidgetsize'){
+              action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
+              $('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
             }
         }
     }
@@ -495,6 +533,9 @@ menu.createWhat = function (liName, does, id) {
     case 'iconsize':
         menu.createRange(id, does);
         break;
+    case 'widgetsize':
+        menu.createRange(id, does);
+        break;
     case 'position':
         menu.createPositionInputs(id, does);
         break;
@@ -546,6 +587,10 @@ menu.createList = function (liName, does) {
 
 menu.createEdits = function () {
     var names;
+
+    console.log(action.selectedItem);
+    console.log(widgetArray);
+
     if (action.selectedItem.substring(0, 3) === 'box') {
         for (var i = 0; i < constants.boxEditArray.length; i++) {
             names = constants.boxEditArray[i].split('~')[0];
@@ -555,6 +600,17 @@ menu.createEdits = function () {
                 menu.createList(constants.boxEditArray[i].split('~')[0], constants.boxEditArray[i].split('~')[4]);
             }
         };
+    } else if ($.inArray(action.selectedItem, widgetArray) != -1) { //widget bruh
+
+      for (var i = 0; i < constants.widgetArray.length; i++) {
+          names = constants.widgetArray[i].split('~')[0];
+          if (names === 'transform') {
+
+          } else {
+              menu.createList(constants.widgetArray[i].split('~')[0], constants.widgetArray[i].split('~')[4]);
+          }
+      }
+
     } else if (action.selectedItem === 'icon') {
         for (var i = 0; i < constants.iconArray.length; i++) {
             names = constants.iconArray[i].split('~')[0];

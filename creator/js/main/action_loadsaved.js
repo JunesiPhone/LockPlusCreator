@@ -34,6 +34,7 @@ action.remakeDIV = function (id) {
     miscDivs();
 
 };
+var addedWidget = [];
 action.replaceElements = function () {
     Object.keys(this.savedElements.placedElements).forEach(function (key) {
         action.remakeDIV(key); //loop object and place items
@@ -65,14 +66,22 @@ action.replaceElements = function () {
             } else {
                 $('#' + key).css(skey, styleVal);
             }
-
+            console.log(key + 'is');
             //Widgets
-            if ($.inArray(key, constants.widgets) !== -1) {
+            if ($.inArray(key, constants.widgets) === -1) {
                 //console.log('setting widget styles');
+                console.log("yes");
+                try{
+                  if($.inArray(key, addedWidget)){
+                    addToPage(key);
+                    addedWidget.push(key);
+                  }
+              }catch(err){
+                console.log(err);
+              }
                 setTimeout(function () {
-                    //console.log('Widget' + key);
                     $('#' + key).css(skey, styleVal);
-                }, 2500);
+                }, 1000);
             }
         });
     });
@@ -96,21 +105,21 @@ action.loadFromStorage = function () { //reload elements onload
             action.setHelpText('Select Add elements to place elements.');
         }
     }
-    try{
-    //fix for if a theme is loaded
-    if (this.savedElements.wallpaper && this.savedElements.wallpaper.length > 10) { //if theme is loaded
-        try {
-            localStorage.setItem('wallpaper', this.savedElements.wallpaper); //transfer to storage
-            this.savedElements.wallpaper = ''; //clear here for performance
-        } catch (err) {
-            alert('Wallpaper was too big to load:(');
+    try {
+        //fix for if a theme is loaded
+        if (this.savedElements.wallpaper && this.savedElements.wallpaper.length > 10) { //if theme is loaded
+            try {
+                localStorage.setItem('wallpaper', this.savedElements.wallpaper); //transfer to storage
+                this.savedElements.wallpaper = ''; //clear here for performance
+            } catch (err) {
+                alert('Wallpaper was too big to load:(');
+            }
         }
+        action.wallpaper = localStorage.getItem('wallpaper');
+        if (action.wallpaper !== '' && action.wallpaper !== null && action.wallpaper !== "null") { //set wallpaper
+            this.setBG(action.wallpaper);
+        }
+    } catch (err) {
+        alert('Error in loading wallpaper' + err);
     }
-    action.wallpaper = localStorage.getItem('wallpaper');
-    if (action.wallpaper !== '' && action.wallpaper !== null && action.wallpaper !== "null") { //set wallpaper
-        this.setBG(action.wallpaper);
-    }
-}catch(err){
-    alert('Error in loading wallpaper' + err);
-}
 };

@@ -135,6 +135,7 @@ input[type='text'], input[type='number'], textarea {
     width: auto;
     text-align: left;
     cursor: pointer;
+    -webkit-transform: translateZ(0);
 }
 #previewCanvas {
     position: absolute;
