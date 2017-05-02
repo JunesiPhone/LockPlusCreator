@@ -96,6 +96,7 @@ action.loadFromStorage = function () { //reload elements onload
             action.setHelpText('Select Add elements to place elements.');
         }
     }
+    try{
     //fix for if a theme is loaded
     if (this.savedElements.wallpaper && this.savedElements.wallpaper.length > 10) { //if theme is loaded
         try {
@@ -109,4 +110,7 @@ action.loadFromStorage = function () { //reload elements onload
     if (action.wallpaper !== '' && action.wallpaper !== null && action.wallpaper !== "null") { //set wallpaper
         this.setBG(action.wallpaper);
     }
+}catch(err){
+    alert('Error in loading wallpaper' + err);
+}
 };

@@ -56,7 +56,7 @@ action.addDraggable = function (id) {
             /* So a random bug popped up, when an item is dragged it sets a height. WHY?
                Which means if you resize the font the bounding box didn't change. This fixes that.
              */
-            if ($.inArray(id, constants.widgets) === -1) {
+            if ($.inArray(id, constants.widgets) != -1) {
                 if (id.substring(0, 3) !== 'box' && id.substring(3, 9) !== 'Circle') { //don't change box //don't change circle
                     $('#' + id).css('height', 'auto');
                 }

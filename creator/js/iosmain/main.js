@@ -37,7 +37,45 @@ action.delete = function () {
         action.removeFromScreen(action.selectedItem, true);
     }
 };
+
 action.saveTheme = function () { //saves info to divs and sends form to create plist
+
+
+if(isInApp){
+
+    if (action.wallpaper !== null && action.wallpaper !== 'null') {
+        //$('#wallpaper').hide();
+        var canvas = document.getElementById('blurcanvas');
+        //canvas.style.display = 'none';
+        //canvas.className = '';
+        var imageData = canvas.toDataURL();
+        if (imageData.length > 7) { //if canvas contains data
+            $('.screen').css('background-image', 'url(' + imageData + ')');
+            action.wallpaper = imageData;
+            action.saveStorage();
+        } else { // no data
+            $('.screen').css('background-image', 'url(' + action.wallpaper + ')');
+        }
+
+       // $('#blurcanvas').remove();
+       // $('#wallpaper').remove();
+       // $('miniWallpaper').remove();
+       // $('miniBlurCanvas').remove();
+    }
+    $('.sidePanel').css('display', 'none');
+    $('#screenCover').css('display', 'none');
+    $('.elementPanel').css('display', 'none');
+    $('.sidePanel').css('opacity', '1');
+
+    $('#roundmenu').css('opacity','0');
+
+    window.location = 'ios:webToNativeCall';
+
+    setTimeout(function(){
+        $('#roundmenu').css('opacity','1');
+    },15000);
+}else{
+
     if (action.wallpaper !== null && action.wallpaper !== 'null') {
         $('#wallpaper').hide();
 
@@ -190,4 +228,7 @@ action.saveTheme = function () { //saves info to divs and sends form to create p
         }, 1000);
 
     });
+}
 };
+
+
