@@ -56,9 +56,10 @@ action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurro
       } else {
           //a.title = splitArray[1];
       }
-    //  if(splitArray[0] === "widget" && action.widgetLoaded === true){
+      console.log(splitArray[0]);
+      if(splitArray[0] === "clear" && !isios2){
 
-    //  }else{
+      }else{
         var div = document.createElement('div');
         div.id = "Test";
         //var a = document.createElement('a');
@@ -82,7 +83,7 @@ action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurro
             //$('#icons').append(a);
         }
       }
-  //  }
+    }
     //action.setEditMenuInputsState(-2, false, menuArray);
 };
 

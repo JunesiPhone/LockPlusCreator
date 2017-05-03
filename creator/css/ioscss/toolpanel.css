@@ -15,8 +15,10 @@
 .toolPanel {
     position: absolute;
     width: 200px;
+    height: 400px;
     left: 0;
-    top: 5%;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
 }
 #logo::after {
     content: attr(title);
@@ -60,19 +62,19 @@
 }
 .toolPanel ul {
     width: 50px;
-    left: -30px;
+    left: -40px;
     position: absolute;
 }
 .toolPanel li {
     text-align: center;
     padding: 7px;
     width: 60px;
-    height: 60px;
-    line-height: 55px;
+    height: 40px;
+    line-height: 35px;
     font-size: 20px;
     background-color: rgba(0, 0, 0, 0.4);
     -webkit-backdrop-filter: blur(20px);
-    margin-top: 5px;
+    margin-top: 1px;
     color: white;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
@@ -80,7 +82,8 @@
     transition-property: transform;
     -webkit-transition-duration: 100ms;
     transition-duration: 100ms;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
+    border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .toolPanel li:after {
@@ -89,7 +92,7 @@
     margin-left: 0px;
     width: 72px;
     text-align: center;
-    top: 45px;
+    top: 35px;
     left: 0;
     text-transform: capitalize;
     font-size: 10px;

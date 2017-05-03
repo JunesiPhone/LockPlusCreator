@@ -1,4 +1,4 @@
-.elementPanel{
+.elementPanel {
     position: absolute;
     width: 420px;
     height: 500px;
@@ -18,23 +18,24 @@
     width: 0px;
     margin-left: 0px;
 }
-.elementPanel div{
-  margin:0;
-  padding:0;
-  text-align: left;
-  background-color: rgba(0,0,0,0); /*76808B*/
-  color: white;
-   list-style: none outside none;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+.elementPanel div {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0);
+    /*76808B*/
+    color: white;
+    list-style: none outside none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
 }
 .elementPanel div:focus {
     outline: none;
 }
-.elementPanel li:focus{
+.elementPanel li:focus {
     outline: none;
 }
-.elementPanel li{
+.elementPanel li {
     white-space: nowrap;
     background-color: #54606e;
     border-color: #54606e;
@@ -49,7 +50,7 @@
 .elementPanel a:focus {
     outline: none;
 }
-.elementPanel label{
+.elementPanel label {
     -webkit-transition-property: font-size;
     transition-property: font-size;
     -webkit-transition-duration: 0.15s;
@@ -76,14 +77,14 @@
     -webkit-border-radius: 3;
     -moz-border-radius: 3;
     border-radius: 25px;
-    color:#ffffff;
+    color: #ffffff;
     font-size: 18px;
-    background-color: #00c3ff;
+    background-color: #fff;
     padding: 5px 6px 5px 6px;
-    border: solid rgba(0,0,0,0.3) 5px;
+    border: solid rgba(0, 0, 0, 0.3) 5px;
     text-decoration: none;
     outline-width: 4px;
-    outline-color: rgba(0,0,0,0);
+    outline-color: rgba(0, 0, 0, 0);
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     z-index: 50;
@@ -112,10 +113,10 @@ label {
     background-color: #54606e;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #00c3ff;
+    background-color: #fff;
     border-radius: 99px;
 }
-.elementPanel h3{
+.elementPanel h3 {
     white-space: nowrap;
     cursor: pointer;
     text-align: center;
@@ -129,9 +130,9 @@ label {
     border-bottom-right-radius: 45px;
     position: relative;
 }
-.elementPanel h3:hover{
-    background-color: #00c3ff;
-    border-color: #00c3ff;
+.elementPanel h3:hover {
+    background-color: #fff;
+    border-color: #fff;
 }
 .categoryTitle {
     cursor: pointer;
@@ -141,13 +142,14 @@ label {
     position: absolute;
     left: 150px;
     /*top: -31px;*/
-    top:50%;
+    top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     margin-top: 0px;
     list-style: none outside none;
     /*height: 240px!important;
-    overflow: scroll;*/ /*could be scrolling list*/
+    overflow: scroll;*/
+    /*could be scrolling list*/
 }
 .subCategory li {
     height: 16px;
@@ -155,36 +157,39 @@ label {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.subCategory li:hover{
-    box-shadow: 0px 0px 0px 2px #00c3ff;
-    -webkit-box-shadow: 0px 0px 0px 2px #00c3ff;
-    box-shadow: 0px 0px 0px 2px #00c3ff;
+.subCategory li:hover {
+    box-shadow: 0px 0px 0px 2px #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px #fff;
+    box-shadow: 0px 0px 0px 2px #fff;
 }
-#textelementsSubCategory li:first-child, #squaresSubCategory li:first-child{ /*fix textElements */
-    margin-top:80px;
+#textelementsSubCategory li:first-child, #squaresSubCategory li:first-child {
+    /*fix textElements */
+    margin-top: 80px;
 }
-#circlesSubCategory li:first-child{ /*make where circles top doesn't clip*/
+#circlesSubCategory li:first-child {
+    /*make where circles top doesn't clip*/
     margin-top: 10px;
 }
-
-.slick-list{
-    height: 190px!important; /*force slick to be bigger to make up for sub category with 9 items*/
+.slick-list {
+    height: 190px!important;
+    /*force slick to be bigger to make up for sub category with 9 items*/
     width: 360px!important;
 }
-
-.slick-slider{ /*defined width to stop page wanting to scroll horizontally*/
+.slick-slider {
+    /*defined width to stop page wanting to scroll horizontally*/
     width: 370px!important;
 }
-#clockList,#weatherList,#systemList,#miscList {
+#clockList, #weatherList, #systemList, #miscList {
     left: 50px;
     width: 500px;
     height: 190px;
     overflow: visible;
     display: inline;
 }
-#dummyOne,#dummyTwo{  /*clean up slick dummy divs*/
+#dummyOne, #dummyTwo {
+    /*clean up slick dummy divs*/
     opacity: 0!important;
 }
-#clockList li, #weatherList li, #systemList li, #miscList li{
+#clockList li, #weatherList li, #systemList li, #miscList li {
     width: 150px!important;
 }
