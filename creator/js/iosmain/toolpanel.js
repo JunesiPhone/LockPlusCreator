@@ -42,9 +42,9 @@ action.toolPanel = function (evt) {
         	this.saveTheme();
             break;
         case 'widget':
-				if(!action.widgetLoaded){
+			//	if(!action.widgetLoaded){
 						showWidgets();
-				}
+			//	}
             break;
         case 'load':
         	location.href = "http://lockplus.us/creator/load/mobile.php";

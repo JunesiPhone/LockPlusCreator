@@ -27,9 +27,14 @@ var loadexjsfile = function (id, over) {
             action.addDraggable(id);
             replaceWidget(id);
         } else {
-            action.movedElements[id] = {
-                type: 'widget'
-            };
+            if (action.movedElements[id]) { //if the widget object already exists just add type
+                action.movedElements[id].type = "widget";
+            } else { //otherwise create a new object for the widget
+                action.movedElements[id] = {
+                    type: 'widget'
+                };
+            }
+
             action.savedElements.placedElements = action.movedElements;
             action.addDraggable(id);
             $('#' + id).css('top', '200');
@@ -39,6 +44,7 @@ var loadexjsfile = function (id, over) {
 
 
 var addToPage = function (id, replace) {
+    //console.log('widget.js id for addToPage' + id);
     if (!document.getElementById(id)) { //check to see if it don't already exist.
         $('#widgetlist').remove();
         loadexjsfile(id, false);

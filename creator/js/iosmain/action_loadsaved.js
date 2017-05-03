@@ -22,7 +22,7 @@
  */
 
 action.remakeDIV = function (id) {
-  console.log(id);
+    console.log("Making Div" + id);
     var div = document.createElement('div');
 
     div.id = id;
@@ -73,27 +73,31 @@ action.replaceElements = function () {
 
                 //console.log('setting widget styles');
                 //console.log("yes");
-                try{
-                  if($.inArray(key, addedWidget)){
-                    addToPage(key);
-                    addedWidget.push(key);
-                  }
-              }catch(err){
-                //console.log(err);
-              }
+                try {
+
+                    if ($.inArray(key, addedWidget) === -1) {
+                        //console.log("loadsaved.js check if in array addedWidget" + $.inArray(key, addedWidget));
+                        addToPage(key);
+                        addedWidget.push(key);
+                    }
+                } catch (err) {
+                    //console.log(err);
+                }
                 setTimeout(function () {
                     $('#' + key).css(skey, styleVal);
+
                 }, 2000);
             }
         });
     });
 };
-action.loadFromStorage = function () { //reload elements onload
+
+action.saveEdit = function () {
     if (localStorage.placedElements) {
         if (localStorage.placedElements.length > 2) { //maybe it was set to a string of {} and it breaks everything
-            action.setHelpText('Click elements to adjust styles.');
+            //action.setHelpText('Click elements to adjust styles.');
             this.savedElements = JSON.parse(localStorage.placedElements);
-            //alert(localStorage.placedElements);
+
             this.movedElements = this.savedElements.placedElements; //keep moved elements up to date too
             if (this.savedElements.overlay) { //set overlay
                 this.setOverlay(this.savedElements.overlay);
@@ -124,5 +128,53 @@ action.loadFromStorage = function () { //reload elements onload
         }
     } catch (err) {
         alert('Error in loading wallpaper' + err);
+    }
+};
+
+action.saveLocal = function () {
+    if (localStorage.ALTplacedElements) {
+        if (localStorage.ALTplacedElements.length > 2) { //maybe it was set to a string of {} and it breaks everything
+            //action.setHelpText('Click elements to adjust styles.');
+            this.savedElements = JSON.parse(localStorage.ALTplacedElements);
+
+            this.movedElements = this.savedElements.placedElements; //keep moved elements up to date too
+            if (this.savedElements.overlay) { //set overlay
+                this.setOverlay(this.savedElements.overlay);
+            }
+            if (this.savedElements.placedElements) {
+                this.replaceElements(); //put items back on screen
+            }
+            if (this.savedElements.iconName) {
+                this.setNewIcon(this.savedElements.iconName, 1); //if second paramenter dont show list
+            }
+        } else {
+            action.setHelpText('Select Add elements to place elements.');
+        }
+    }
+    try {
+        //fix for if a theme is loaded
+        if (this.savedElements.wallpaper && this.savedElements.wallpaper.length > 10) { //if theme is loaded
+            try {
+                localStorage.setItem('ALTwallpaper', this.savedElements.wallpaper); //transfer to storage
+                this.savedElements.wallpaper = ''; //clear here for performance
+            } catch (err) {
+                alert('Wallpaper was too big to load:(');
+            }
+        }
+        action.wallpaper = localStorage.getItem('ALTwallpaper');
+        if (action.wallpaper !== '' && action.wallpaper !== null && action.wallpaper !== "null") { //set wallpaper
+            this.setBG(action.wallpaper);
+        }
+    } catch (err) {
+        alert('Error in loading wallpaper' + err);
+    }
+};
+
+action.loadFromStorage = function () { //reload elements onload
+    //isios2 is ios2.html just loads into a different localStorage
+    if (isios2) {
+        action.saveLocal();
+    } else {
+        action.saveEdit();
     }
 };
