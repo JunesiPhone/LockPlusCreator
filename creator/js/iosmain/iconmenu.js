@@ -56,7 +56,6 @@ action.showIconMenu = function (menuArray, indexesToSurround) { //indexesToSurro
       } else {
           //a.title = splitArray[1];
       }
-      console.log(splitArray[0]);
       if(splitArray[0] === "clear" && !isios2){
 
       }else{

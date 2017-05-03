@@ -57,6 +57,7 @@ action.usualCss = function (elementId, cssKey, cssValue) {
     }
     $('#' + elementId).css(cssKey, cssValue);
 
+
     action.savedElements.placedElements[elementId][cssKey] = cssValue;
     action.saveStorage();
 
