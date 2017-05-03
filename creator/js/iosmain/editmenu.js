@@ -119,7 +119,6 @@ menu.createButtons = function (id, name) {
         button.onclick = function () {
             action.removeItemFromScreen(action.selectedItem);
 
-            console.log(action.selectedItem);
 
             if ($.inArray(action.selectedItem, constants.widgets) === -1) {
               action.widgetLoaded = false;
@@ -283,7 +282,12 @@ menu.createRange = function (name, does) {
         max = 320;
     } else {
         if(name == 'BMwidgetsize'){
-          startVal = 1;
+          //get scale value for startval if one is set.
+          var div = $('#' + action.selectedItem).css('transform');
+          var values = div.split('(')[1];
+          values = values.split(')')[0];
+          values = values.split(',');
+          startVal = values[0] || 1;
           decimal = true;
           max = 1;
         }else{
@@ -292,7 +296,6 @@ menu.createRange = function (name, does) {
           max = 320;
         }
     }
-    console.log(name);
 
     var initOpct = new Powerange(opct, {
         callback: function () {
@@ -366,9 +369,9 @@ menu.adjust = function (adjustItem, value, manual) {
                 //action.setCss('iconImg', 'width', value + 'px');
                 break;
             case 'BMwidgetsize':
-            console.log(value);
-                action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
-                $('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
+            action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
+            action.savedElements.placedElements[action.selectedItem]['-webkit-transform'] = 'scale(' + value + ')';
+            //$('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
                 //action.setCss('iconImg', 'width', value + 'px');
                 break;
             case 'BMborder':
@@ -400,10 +403,10 @@ menu.adjust = function (adjustItem, value, manual) {
                 $('#iconImg').css('width', value + 'px');
             } else if (adjustItem === 'BMwidgetsize'){
               action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
-              $('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
             }
         }
     }
+
 };
 
 menu.createTriButtons = function (name, one, two, three) {
@@ -588,8 +591,6 @@ menu.createList = function (liName, does) {
 menu.createEdits = function () {
     var names;
 
-    console.log(action.selectedItem);
-    console.log(widgetArray);
 
     if (action.selectedItem.substring(0, 3) === 'box') {
         for (var i = 0; i < constants.boxEditArray.length; i++) {

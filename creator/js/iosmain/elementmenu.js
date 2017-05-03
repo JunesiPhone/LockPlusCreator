@@ -54,11 +54,11 @@ elPanel.clicker = function () {
 
     $(".accordionInner").click(function (event) {
         if (event.target.title.length > 1) {
-            console.log(event.target.title);
+            //console.log(event.target.title);
             var div = $('#' + event.target.title);
-            console.log(div.length);
+            //console.log(div.length);
             if (div.length !== 0) {
-                console.log('remove');
+              //  console.log('remove');
                 action.removeItemFromScreen(event.target.title);
                 if (event.target.className === 'liSelected') {
                     event.target.className = '';
@@ -68,7 +68,7 @@ elPanel.clicker = function () {
                     event.target.className = 'liSelected';
                 }
                 action.addtoScreen(event.target.title);
-                console.log('apply');
+              //  console.log('apply');
             }
         }
     });

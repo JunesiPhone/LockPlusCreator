@@ -7,8 +7,9 @@
     overflow: hidden;
 }
 html {
-    background: url(mobilebg.jpg) no-repeat center center fixed;
-    background-size: cover;
+    /*background: url(mobilebg.jpg) no-repeat center center fixed;
+    background-size: cover;*/
+    background-color: black;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {

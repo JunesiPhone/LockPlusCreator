@@ -35,6 +35,9 @@ action.toolPanel = function (evt) {
         case 'clear':
         	action.clearTheme(-1);
             break;
+				case 'more':
+					showMenu();
+					break;
         case 'save':
         	this.saveTheme();
             break;

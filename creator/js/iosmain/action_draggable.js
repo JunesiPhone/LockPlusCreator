@@ -18,8 +18,14 @@
  *
  */
 action.addDraggable = function (id) {
-    var contain;
-    if (id === 'icon') {
+    var contain,
+        iswidget;
+
+    if ($.inArray(id, widgetArray) != -1) {
+      iswidget = true;
+    }
+
+    if (id === 'icon' || iswidget === true) {
         contain = '';
     } else {
         contain = $('.screen');
@@ -49,6 +55,9 @@ action.addDraggable = function (id) {
             action.sizeQueueTimeout.initialValue = '';
 
             // Since we're not going through setCss, it's never saved to localStorage. Gotta do it manually
+
+
+
             action.savedElements.placedElements[id].left = position.left;
             action.savedElements.placedElements[id].top = position.top;
             action.saveStorage();
@@ -56,10 +65,13 @@ action.addDraggable = function (id) {
             /* So a random bug popped up, when an item is dragged it sets a height. WHY?
                Which means if you resize the font the bounding box didn't change. This fixes that.
              */
-            if ($.inArray(id, constants.widgets) != -1) {
-                if (id.substring(0, 3) !== 'box' && id.substring(3, 9) !== 'Circle') { //don't change box //don't change circle
-                    $('#' + id).css('height', 'auto');
-                }
+            if ($.inArray(id, widgetArray) != -1) { //fix for widgets not wanting to get right
+              action.savedElements.placedElements[id].left = ui.position.left;
+              action.savedElements.placedElements[id].top = ui.position.top;
+              action.saveStorage();
+            }
+            if (id.substring(0, 3) !== 'box' && id.substring(3, 9) !== 'Circle' && $.inArray(id, widgetArray) == -1) { //don't change box //don't change circle
+                $('#' + id).css('height', 'auto');
             }
 
             /* Create a div around the element which can be used for snapping */

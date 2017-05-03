@@ -8,7 +8,8 @@ var constants = {
                     ,'widget~Load Widget~fa fa-flag~loadWidget~Widget'
                     ,'save~Save Theme~fa fa-upload~saveDiv~Save'
                     //,'load~Load Theme~fa fa-download~loadDiv~Load'
-                    ,'clear~Clear Theme~fa fa-eraser~clearDiv~Clear'],
+                    ,'clear~Clear Theme~fa fa-eraser~clearDiv~Clear'
+                    ,'more~More~fa fa-upload~moreDiv~More'],
     backgroundArray: ['cgBackground~Change Background~fa fa-photo~cgBackgroundDiv~ChooseBG'
                      /*,'openBackground~View Background in New Tab~fa fa-external-link-square~openBackgroundDiv'*/
                      ,'backgroundBlur~Change Background Blur~fa fa-bullseye~backgroundBlurDiv~BlurBG'

@@ -56,6 +56,7 @@ action.usualCss = function (elementId, cssKey, cssValue) {
         initialValue = document.getElementById(elementId).style[cssKey]; // Woud've used .css, but Jquery's a bitch about some things, returning things it shouldn't and breaking everything
     }
     $('#' + elementId).css(cssKey, cssValue);
+
     action.savedElements.placedElements[elementId][cssKey] = cssValue;
     action.saveStorage();
 
