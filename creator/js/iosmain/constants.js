@@ -9,7 +9,7 @@ var constants = {
                     ,'save~Save Theme~fa fa-upload~saveDiv~Save'
                     //,'load~Load Theme~fa fa-download~loadDiv~Load'
                     ,'clear~Clear Theme~fa fa-eraser~clearDiv~Clear'
-                    ,'more~More~fa fa-upload~moreDiv~More'],
+                    ,'more~More~fa fa-bars~moreDiv~More'],
     backgroundArray: ['cgBackground~Change Background~fa fa-photo~cgBackgroundDiv~ChooseBG'
                      /*,'openBackground~View Background in New Tab~fa fa-external-link-square~openBackgroundDiv'*/
                      ,'backgroundBlur~Change Background Blur~fa fa-bullseye~backgroundBlurDiv~BlurBG'

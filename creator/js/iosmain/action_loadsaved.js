@@ -92,7 +92,7 @@ action.replaceElements = function () {
     });
 };
 
-action.saveEdit = function () {
+action.saveNormalLocalStorage = function () {
     if (localStorage.placedElements) {
         if (localStorage.placedElements.length > 2) { //maybe it was set to a string of {} and it breaks everything
             //action.setHelpText('Click elements to adjust styles.');
@@ -131,7 +131,7 @@ action.saveEdit = function () {
     }
 };
 
-action.saveLocal = function () {
+action.saveALTLocalStorage = function () {
     if (localStorage.ALTplacedElements) {
         if (localStorage.ALTplacedElements.length > 2) { //maybe it was set to a string of {} and it breaks everything
             //action.setHelpText('Click elements to adjust styles.');
@@ -173,8 +173,8 @@ action.saveLocal = function () {
 action.loadFromStorage = function () { //reload elements onload
     //isios2 is ios2.html just loads into a different localStorage
     if (isios2) {
-        action.saveLocal();
+        action.saveALTLocalStorage();
     } else {
-        action.saveEdit();
+        action.saveNormalLocalStorage();
     }
 };

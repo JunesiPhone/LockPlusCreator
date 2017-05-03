@@ -20,6 +20,10 @@
  * Sets background
  * Loads after action.js as it contains constants and action object
  */
+
+//localStorage
+var wallpaperBlurText = (isios2 === true) ? 'ALTwallpaperBlur' : 'wallpaperBlur';
+
 action.openBackground = function (purpose) { // either 'original' or 'blurry'
     var newWindow,
         newCanvas,
@@ -31,7 +35,8 @@ action.openBackground = function (purpose) { // either 'original' or 'blurry'
             newCanvas = document.getElementById('blurcanvas').cloneNode();
             newCanvas.className = '';
             //newCanvas.getContext('2d').drawImage(document.getElementById('blurcanvas'),0,0);
-            stackBlurImage('wallpaper', newCanvas, localStorage.getItem('wallpaperBlur'), false);
+
+            stackBlurImage('wallpaper', newCanvas, localStorage.getItem(wallpaperBlurText), false);
             imageData = newCanvas.toDataURL();
             image = document.createElement('img');
             image.src = imageData;
@@ -102,10 +107,11 @@ action.backgroundBlur = function (idSelector, cssKey, unit, jsCssKey, purpose) {
                 $('#miniBlurCanvas').css('opacity', '1');
             });
             stackBlurImage('wallpaper', 'blurcanvas', $(idSelector).val(), false);
-            localStorage.setItem('wallpaperBlur', $(idSelector).val());
+            localStorage.setItem(wallpaperBlurText, $(idSelector).val());
         }, 400);
     } else if (purpose === 'get') {
-        blur = localStorage.getItem('wallpaperBlur');
+        blur = localStorage.getItem(wallpaperBlurText);
+
         if (blur !== null && blur !== '0') {
             return blur;
         }

@@ -58,7 +58,12 @@ action.clearTheme = function (code) { // -1 is to check, 0 doesn't clear theme, 
         action.hideClearLabel();
         action.setHelpText('Not cleared, click to edit elements. (Also delete)');
     } else if (code === 1) { // definitely clear the theme
-        localStorage.removeItem('placedElements');
+        if (isios2) {
+            localStorage.removeItem('ALTplacedElements');
+        } else {
+            localStorage.removeItem('placedElements');
+        }
+
         action.savedElements = {};
         action.movedElements = {};
         action.selectedItem = '';

@@ -54,7 +54,11 @@ var addToPage = function (id, replace) {
         loadexjsfile(id, false);
     }
     if (!replace) {
-        localStorage.setItem('placedElements', JSON.stringify(action.savedElements));
+        if (isios2) {
+            localStorage.setItem('ALTplacedElements', JSON.stringify(action.savedElements));
+        } else {
+            localStorage.setItem('placedElements', JSON.stringify(action.savedElements));
+        }
     }
     action.widgetLoaded = true;
 };
