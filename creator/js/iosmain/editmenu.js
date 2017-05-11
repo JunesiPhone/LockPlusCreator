@@ -121,7 +121,7 @@ menu.createButtons = function (id, name) {
 
 
             if ($.inArray(action.selectedItem, constants.widgets) === -1) {
-              action.widgetLoaded = false;
+                action.widgetLoaded = false;
             }
 
 
@@ -133,6 +133,16 @@ menu.createButtons = function (id, name) {
             }
 
             $("#accordion").find("li[title='" + action.selectedItem + "']").removeClass();
+        };
+    } else if (name == 'addtext') {
+        button.innerHTML = 'Enter Text';
+        button.onclick = function () {
+            var prmpt = prompt("Enter full text", "");
+            if (prmpt != null) {
+                $('#' + action.selectedItem).html(prmpt);
+                action.savedElements.placedElements[action.selectedItem].innerHTML = prmpt //Saves to localStorage
+                action.saveStorage();
+            }
         };
     } else if (name === 'changeicon') {
         button.innerHTML = 'Change Icon';
@@ -281,19 +291,19 @@ menu.createRange = function (name, does) {
         decimal = false;
         max = 320;
     } else {
-        if(name == 'BMwidgetsize'){
-          //get scale value for startval if one is set.
-          var div = $('#' + action.selectedItem).css('transform');
-          var values = div.split('(')[1];
-          values = values.split(')')[0];
-          values = values.split(',');
-          startVal = values[0] || 1;
-          decimal = true;
-          max = 1;
-        }else{
-          startVal = $('#' + action.selectedItem).css(does).replace(/[^-\d\.]/g, '');
-          decimal = false;
-          max = 320;
+        if (name == 'BMwidgetsize') {
+            //get scale value for startval if one is set.
+            var div = $('#' + action.selectedItem).css('transform');
+            var values = div.split('(')[1];
+            values = values.split(')')[0];
+            values = values.split(',');
+            startVal = values[0] || 1;
+            decimal = true;
+            max = 1;
+        } else {
+            startVal = $('#' + action.selectedItem).css(does).replace(/[^-\d\.]/g, '');
+            decimal = false;
+            max = 320;
         }
     }
 
@@ -308,33 +318,33 @@ menu.createRange = function (name, does) {
         hideRange: true
     });
 
-    if(name != 'BMwidgetsize'){
-      var inputContainer = document.createElement('div');
-      inputContainer.className = 'inputContainer';
-      var input2 = document.createElement('input');
-      input2.type = 'text';
-      input2.value = startVal;
-      input2.id = 'manual' + name;
-      input2.className = 'manualInput';
-      var increment = document.createElement('div');
-      var decrement = document.createElement('div');
-      increment.className = 'incs inButton';
-      increment.onclick = function () {
-          menu.inputClick($(this));
-      }
-      increment.innerHTML = '+';
-      decrement.className = 'decs inButton';
-      decrement.onclick = function () {
-          menu.inputClick($(this));
-      }
-      decrement.innerHTML = '-';
-      input2.onchange = function () {
-          menu.adjustManual(name, this.value);
-      }
-      inputContainer.appendChild(increment);
-      inputContainer.appendChild(decrement);
-      inputContainer.appendChild(input2);
-      document.getElementById(name).appendChild(inputContainer);
+    if (name != 'BMwidgetsize') {
+        var inputContainer = document.createElement('div');
+        inputContainer.className = 'inputContainer';
+        var input2 = document.createElement('input');
+        input2.type = 'text';
+        input2.value = startVal;
+        input2.id = 'manual' + name;
+        input2.className = 'manualInput';
+        var increment = document.createElement('div');
+        var decrement = document.createElement('div');
+        increment.className = 'incs inButton';
+        increment.onclick = function () {
+            menu.inputClick($(this));
+        }
+        increment.innerHTML = '+';
+        decrement.className = 'decs inButton';
+        decrement.onclick = function () {
+            menu.inputClick($(this));
+        }
+        decrement.innerHTML = '-';
+        input2.onchange = function () {
+            menu.adjustManual(name, this.value);
+        }
+        inputContainer.appendChild(increment);
+        inputContainer.appendChild(decrement);
+        inputContainer.appendChild(input2);
+        document.getElementById(name).appendChild(inputContainer);
     }
 
 };
@@ -369,9 +379,9 @@ menu.adjust = function (adjustItem, value, manual) {
                 //action.setCss('iconImg', 'width', value + 'px');
                 break;
             case 'BMwidgetsize':
-            action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
-            action.savedElements.placedElements[action.selectedItem]['-webkit-transform'] = 'scale(' + value + ')';
-            //$('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
+                action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
+                action.savedElements.placedElements[action.selectedItem]['-webkit-transform'] = 'scale(' + value + ')';
+                //$('#' + action.selectedItem).css('-webkit-transform', 'scale(' + value + ')');
                 //action.setCss('iconImg', 'width', value + 'px');
                 break;
             case 'BMborder':
@@ -401,8 +411,8 @@ menu.adjust = function (adjustItem, value, manual) {
             } else if (adjustItem === 'BMiconsize') {
                 action.setCss(action.selectedItem, 'width', value + 'px');
                 $('#iconImg').css('width', value + 'px');
-            } else if (adjustItem === 'BMwidgetsize'){
-              action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
+            } else if (adjustItem === 'BMwidgetsize') {
+                action.setCss(action.selectedItem, '-webkit-transform', 'scale(' + value + ')');
             }
         }
     }
@@ -527,6 +537,9 @@ menu.createWhat = function (liName, does, id) {
     case 'width':
         menu.createRange(id, does);
         break;
+    case 'addtext':
+        menu.createButtons(id, liName);
+        break;
     case 'height':
         menu.createRange(id, does);
         break;
@@ -603,14 +616,14 @@ menu.createEdits = function () {
         };
     } else if ($.inArray(action.selectedItem, widgetArray) != -1) { //widget bruh
 
-      for (var i = 0; i < constants.widgetArray.length; i++) {
-          names = constants.widgetArray[i].split('~')[0];
-          if (names === 'transform') {
+        for (var i = 0; i < constants.widgetArray.length; i++) {
+            names = constants.widgetArray[i].split('~')[0];
+            if (names === 'transform') {
 
-          } else {
-              menu.createList(constants.widgetArray[i].split('~')[0], constants.widgetArray[i].split('~')[4]);
-          }
-      }
+            } else {
+                menu.createList(constants.widgetArray[i].split('~')[0], constants.widgetArray[i].split('~')[4]);
+            }
+        }
 
     } else if (action.selectedItem === 'icon') {
         for (var i = 0; i < constants.iconArray.length; i++) {
@@ -619,6 +632,15 @@ menu.createEdits = function () {
 
             } else {
                 menu.createList(constants.iconArray[i].split('~')[0], constants.iconArray[i].split('~')[4]);
+            }
+        }
+    } else if (action.selectedItem === 'textOne' || action.selectedItem === 'textTwo' || action.selectedItem === 'textThree' || action.selectedItem === 'textFour' || action.selectedItem === 'textFive') {
+        for (var i = 0; i < constants.customTextNew.length; i++) {
+            names = constants.customTextNew[i].split('~')[0];
+            if (names === 'transform') {
+
+            } else {
+                menu.createList(constants.customTextNew[i].split('~')[0], constants.customTextNew[i].split('~')[4]);
             }
         }
     } else {

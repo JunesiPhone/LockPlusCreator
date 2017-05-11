@@ -113,7 +113,7 @@ function handleScreenClick(event) { // Had to move everything to this function s
             deselectElement(action.selectedItem, false); // Unhighlight the old element
 
             action.selectedItem = event.target.id; // Set the selected item to the new element
-            $('#' + event.target.id).css('outline', '1px solid #00c3ff'); // Highlight new element
+            $('#' + event.target.id).css('outline', '1px solid #fff'); // Highlight new element
 
             if (action.selectedItem === '') $('.elementPanel').data('prevHiddenState', $('.elementPanel').is(':visible')); // Save the panel's previous state, but only if switching to a new element
 

@@ -33,6 +33,20 @@ var constants = {
                     ,'shadow~Edit Text Shadow~fa fa-underline~shadowDiv'
                     ,'linearGradient~Edit Linear Text Color Gradient~fa fa-barcode~linearTextGradientDiv'
                     ,'delete~Delete item~fa fa-trash-o~deleteDiv'],
+                    customTextNew: ['size~Change Font Size~fa fa-font~sizeDiv~font-size'
+                                    ,'width~Change Width~fa fa-arrows-h~widthDiv~width'
+                                    ,'position~Change Position~fa fa-arrows~positionDiv~top-left'
+                                    ,'color~Change Color~fa fa-eyedropper~colorDiv' //added
+                                    ,'align~Change Alignment~fa fa-align-center~alignDiv'
+                                    ,'fonts~Change Font~ fa fa-language~fontsDiv'
+                                    ,'transform~Change Transformations~fa fa-level-up~transformDiv'
+                                    ,'uppercase~Change Uppercase~fa fa-text-height~uppercaseDiv' //added
+
+                                    ,'style~Change Font Style~fa fa-italic~styleDiv'
+
+                                    ,'shadow~Edit Text Shadow~fa fa-underline~shadowDiv'
+                                    ,'addtext~Change text~fa fa-text-width~addtextDiv' //added
+                                    ,'delete~Delete item~fa fa-trash-o~deleteDiv'],
     customTextArray: ['customText~Change Text~fa fa-pencil~textDiv'
                     ,'size~Change Font Size~fa fa-font~sizeDiv'
                     ,'width~Change Width~fa fa-arrows-h~widthDiv'

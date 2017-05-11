@@ -179,7 +179,7 @@ input[type='text'], input[type='number'], textarea {
     background-color: transparent;
 }
 .iconList::-webkit-scrollbar-thumb {
-    background-color: #00c3ff;
+    background-color: #fff;
     border-radius: 99px;
 }
 .iconList::-webkit-scrollbar {
@@ -768,21 +768,20 @@ html {
 }
 .liText {
     position: absolute;
-    left: 0;
-    color: black;
-    line-height: 60px;
+    top: 3px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    color: white;
     text-shadow: 0 1px 2px white;
-    border-right: 1px solid black;
-    background-color: #fff;
     text-transform: capitalize;
-    width: 105px;
+    width: 200px;
     text-align: center;
 }
 .slider-wrapper {
     width: 100px!important;
     position: absolute;
-    top: 30px;
-    right: 165px;
+    top: 50px;
+    left: 40px;
 }
 .range-bar {
     position: absolute;
@@ -820,15 +819,15 @@ html {
 #bottomMenuUL li {}
 .inputContainer {
     position: absolute;
-    top: 20px;
-    right: 50px;
+    top: 40px;
+    right: 40px;
     width: 90.5px;
     height: 60px;
 }
 .inputContainer2 {
     position: absolute;
-    top: 20px;
-    right: 160px;
+    top: 40px;
+    left: 40px;
     width: 90.5px;
     height: 60px;
 }
@@ -880,8 +879,9 @@ html {
 }
 .openButtons {
     position: absolute;
-    top: 20px;
-    right: 60px;
+    top: 40px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
     width: 150px;
     background-color: #fff;
     color: black;
@@ -890,8 +890,9 @@ html {
 }
 .borderButton {
     position: absolute;
-    top: 20px;
-    right: 60px;
+    top: 40px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
     width: 60px;
     background-color: #fff;
     color: black;
@@ -902,8 +903,11 @@ html {
 .triContain {
     position: absolute;
     display: inline-block;
-    right: 40px;
-    top: 18px;
+    width: 180px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    top: 40px;
+    white-space: nowrap;
 }
 .triContain div {
     display: inline-block;
@@ -912,6 +916,7 @@ html {
     padding-left: 10px;
     padding-right: 10px;
     border-right: 1px solid black;
+    text-align: center;
 }
 #editDragger {
     position: absolute;
@@ -951,7 +956,7 @@ html {
     text-align: left;
     color: white;
     list-style-type: none;
-    height: 60px;
+    height: 80px;
     top: -15px;
     left: -41px;
     background-color: rgba(0, 0, 0, 0.7);
